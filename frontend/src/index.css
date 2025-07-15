@@ -1,0 +1,77 @@
+/* Global styles for MVP - base font, colors, margins, padding */
+
+body, html {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box; /* Include padding and border in element width/height */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Font family */
+  font-size: 1rem; /* Base font size */
+  background-color: black; /* Page background color */
+  color: goldenrod; /* Default text color */
+}
+
+h2 {
+  font-size: 1.5rem;        
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+a {
+  color: goldenrod; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: 400; /* Slightly bold */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for links */
+a:hover {
+  color: rgb(255, 0, 157); /* Hover color */
+}
+
+* {
+  box-sizing: border-box; /* Ensure padding and border are included in element width/height */
+}
+
+/* Consistent padding and margin for all sections */
+section, div {
+  padding: 1rem 2rem; /* Vertical and horizontal padding */
+  margin: 0 auto; /* Center content horizontally */
+  max-width: 100rem; /* Max width for layout consistency */
+}
+
+/* Tablets / Small laptops: Adjust spacing and font sizing */
+@media (max-width: 900px) {
+  body, html {
+    font-size: 0.95rem; /* Slightly reduce base font size */
+  }
+
+  section, div {
+    padding: 1rem 1.5rem; /* Tighter padding */
+  }
+
+  h2 {
+    font-size: 1.3rem; /* Slightly smaller headings */
+  }
+}
+
+/* Mobile phones: Tight layout and better readability */
+@media (max-width: 600px) {
+  body, html {
+    font-size: 0.9rem;
+  }
+
+  section, div {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    text-align: center; /* Optional: center headings for mobile */
+  }
+
+  a {
+    display: inline-block;
+    word-break: break-word;
+  }
+}
+

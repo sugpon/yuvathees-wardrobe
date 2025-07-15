@@ -1,0 +1,141 @@
+/* Container for entire shipping section */
+.shipping-container {
+  display: flex;
+  font-size: 1.2rem;  /* Ensure normal 16px base font size */
+  flex-direction: column;     /* Stack children vertically */
+  align-items: center;        /* Center horizontally */
+  justify-content: center;    /* Center vertically if needed */
+  padding: 2rem;              /* Outer padding */
+}
+
+.shipping-container h2{
+  font-size: 2rem;          /* Larger heading for visibility */
+  margin-bottom: 1.5rem;      /* Space below the heading */
+}
+
+/* Main calculator box */
+.shipping-calculator {
+  max-width: 450px;                /* Max width for desktop */
+  margin: 2rem auto;               /* Center horizontally with vertical spacing */
+  padding: 2rem;                   /* Inner spacing */
+  background-color: black;         /* Black background to match site */
+  border: 1px solid goldenrod;    /* Goldenrod border for style & visibility */
+  border-radius: 8px;              /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(218, 165, 32, 0.3); /* Soft goldenrod shadow */
+  display: flex;
+  flex-direction: column;         /* Stack inputs vertically */
+  gap: 1rem;                      /* Uniform spacing between elements */
+  color: goldenrod;               /* Goldenrod text for contrast */
+}
+
+/* Heading inside shipping calculator */
+.shipping-calculator h1 {
+  text-align: center;     /* Center heading text */
+  font-size: 1.5rem;     /* Readable font size */
+  color: goldenrod;      /* Consistent brand color */
+  font-weight: bold;
+}
+
+/* Labels for inputs and selects */
+.shipping-calculator label {
+  font-weight: bold;
+  color: goldenrod;      /* Goldenrod labels */
+}
+
+/* Styling for input and select fields */
+.shipping-calculator select,
+.shipping-calculator input {
+  padding: 0.5rem;                 /* Comfortable padding */
+  border: 1px solid goldenrod;    /* Matching border color */
+  border-radius: 4px;              /* Rounded input corners */
+  background-color: black;         /* Black background */
+  color: goldenrod;                /* Text color */
+  font-size: 1rem;                 /* Consistent font size */
+}
+
+/* Checkbox label with spacing */
+.shipping-calculator label[for="jewelry"] {
+  font-weight: normal;             /* Normal weight for checkbox label */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;                    /* Space between checkbox and text */
+  color: goldenrod;
+}
+
+/* Result text styling */
+.shipping-calculator p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: goldenrod;
+}
+
+/* Validation error message - forced bright red with !important
+  Using !important here to ensure the validation error styles 
+  (color, font-weight, spacing) override any conflicting global or browser styles.
+  This guarantees error messages remain clearly visible and consistently styled 
+  across all devices and themes.
+*/
+.validation-error {
+  color: #ff4d4d !important;      /* Bright red for errors */
+  font-weight: bold !important;
+  margin-top: -0.5rem !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+  font-size: 1rem !important;
+  background-color: transparent !important; /* Ensure no background override */
+}
+
+/* Shipping rates table styles */
+.shipping-rates-table table {
+  border-collapse: collapse;
+  width: 80%;                     /* Width to fit nicely in container */
+  margin: 1.5rem 0;               /* Vertical spacing */
+  font-size: 0.95rem;
+  border: 1px solid goldenrod;    /* Goldenrod border for table */
+  text-align: left;
+  color: goldenrod;
+}
+
+.shipping-rates-table th,
+.shipping-rates-table td {
+  border: 1px solid goldenrod;    /* Cell borders */
+  padding: 1rem 1rem;
+}
+
+/* Responsive styling for tablets & small desktops */
+@media (max-width: 900px) {
+  .shipping-calculator {
+    max-width: 400px;             /* Slightly narrower */
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .shipping-calculator h1 {
+    font-size: 1.3rem;
+  }
+
+  .shipping-rates-table table {
+    width: 90%;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive styling for mobile screens */
+@media (max-width: 600px) {
+  .shipping-calculator {
+    max-width: 320px;/* Narrower on small screens */
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .shipping-calculator h1 {
+    font-size: 1.1rem;
+  }
+
+  .shipping-rates-table table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+}

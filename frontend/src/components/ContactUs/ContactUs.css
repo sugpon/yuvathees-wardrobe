@@ -1,0 +1,94 @@
+.contactSection {
+  padding: 2rem;
+  display: flex;
+  justify-content: center; /* Center the form horizontally */
+}
+
+.contactSection h2 {
+  font-size: 2rem; /* Larger font size for visibility */
+  margin-bottom: 1.5rem; /* Space below the heading */
+}
+
+.contactForm {
+  background-color: black; /* Black background to match site theme */
+  padding: 3rem; /* Spacious padding inside the form */
+  border-radius: 12px; /* Rounded corners for a smooth look */
+  box-shadow: 0 0 10px rgba(218, 165, 32, 0.5); /* Soft goldenrod glow around form */
+  width: 100%;
+  max-width: 400px; /* Restrict max width for readability */
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 1rem; /* Even spacing between elements */
+}
+
+.contactForm label {
+  font-weight: bold;
+  font-size: 1.05rem; /* Consistent font size for labels */
+}
+
+.contactForm input,
+.contactForm textarea {
+  padding: 0.75rem;
+  border: 1px solid goldenrod; /* Goldenrod border to match theme */
+  border-radius: 5px;
+  font-size: 1.05rem;
+  font-family: inherit; /* Inherit font family from parent */
+  background-color: black; /* Inputs have black background */
+  color: goldenrod; /* Goldenrod text inside inputs */
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: none;
+  border-color: goldenrod; /* Highlight border on focus */
+  box-shadow: 0 0 5px goldenrod; /* Glow effect on focus */
+}
+
+.charCounter {
+  font-size: 1rem;
+  color: goldenrod;
+  text-align: right; /* Align character count text to the right */
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.thankYouMessage {
+  margin-top: 1rem;
+  color: green;
+  font-weight: 500;
+}
+
+/* Media query for tablets and smaller desktops */
+@media (max-width: 900px) {
+  .contactForm {
+    max-width: 350px; /* Slightly smaller max width */
+    padding: 2.5rem;
+  }
+  .contactForm input,
+  .contactForm textarea {
+    font-size: 0.95rem; /* Slightly smaller font */
+  }
+  .submitBtn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  .contactSection {
+    padding: 1rem; /* Less padding on small screens */
+  }
+  .contactForm {
+    max-width: 100%; /* Full width on very small screens */
+    padding: 2rem 1.5rem;
+  }
+  .contactForm input,
+  .contactForm textarea {
+    font-size: 0.9rem; /* Smaller font for mobile */
+  }
+  .submitBtn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}

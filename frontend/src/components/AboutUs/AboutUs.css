@@ -1,0 +1,47 @@
+/* About Us Page Styles */
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.about-content {
+  max-width: 900px;
+  width: 100%;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  text-align: left;
+  padding: 1rem;
+}
+
+/* Headings */
+.about-content h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Paragraph spacing */
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Tablet responsiveness */
+@media (max-width: 900px) {
+  .about-content {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .about-content {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,65 @@
+/* Footer container styles */
+.footer-container {
+  padding: 2rem; /* Padding around footer */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center; /* Center text inside */
+}
+
+/* Footer main title */
+.footer-title {
+  font-size: 1.2rem; /* Base font size */
+  font-weight: bold; /* Bold text */
+  margin-bottom: 0.1rem; /* Small space below */
+}
+
+/* Footer copyright or years text */
+.footer-years {
+  font-size: 0.9rem; /* Slightly smaller font */
+  margin-bottom: 0.5rem; /* Space below */
+}
+
+/* Social media icon links */
+.social-icons a {
+  font-size: 1.8rem; /* Icon size */
+  margin: 0 1rem; /* Horizontal spacing */
+}
+
+/* Responsive styles for small screens up to 600px */
+@media (max-width: 600px) {
+  .footer-container {
+    padding: 1rem; /* Reduced padding for smaller devices */
+    height: auto; /* Let height adjust automatically */
+  }
+
+  .social-icons a {
+    font-size: 1.4rem; /* Smaller icons */
+    margin: 0 0.5rem; /* Less horizontal margin */
+  }
+
+  .footer-title {
+    font-size: 1rem; /* Smaller title font */
+  }
+
+  .footer-years {
+    font-size: 0.6rem; /* Smaller years font */
+  }
+}
+
+/* Responsive styles for medium screens up to 900px */
+@media (max-width: 900px) {
+  .footer-title {
+    font-size: 1.1rem; /* Slightly smaller than base */
+  }
+
+  .footer-years {
+    font-size: 0.8rem; /* Medium font size */
+  }
+
+  .social-icons a {
+    font-size: 1.6rem; /* Slightly smaller icons */
+    margin: 0 0.75rem; /* Medium margin */
+  }
+}

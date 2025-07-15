@@ -1,0 +1,21 @@
+/* Reuseable button styles for various components */
+.custom-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: goldenrod;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.custom-button:hover:not(:disabled) {
+  background-color: rgb(255, 0, 157);
+  color: black;
+}
+
+.custom-button:disabled {
+  background-color: #f8e4e4;
+  color: #666;
+  cursor: not-allowed;
+}
