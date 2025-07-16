@@ -74,4 +74,5 @@ public class SubCategory {
     public void setCategory(Category category) {
         this.category = category;
     }
+
 }

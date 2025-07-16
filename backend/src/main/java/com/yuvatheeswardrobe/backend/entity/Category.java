@@ -1,6 +1,8 @@
 package com.yuvatheeswardrobe.backend.entity;
 import jakarta.persistence.*; // Importing JPA annotations for entity mapping
 
+import java.util.List;
+
 @Entity  // Marks this class as a JPA entity, meaning Hibernate will map it to a table
 public class Category {
 
@@ -13,6 +15,9 @@ public class Category {
     private String description;
     @Column(name = "image_url", length = 255)  // Maps to `image_url` column, for image path or URL
     private String imageUrl;
+
+    @OneToMany (mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true) // Establishes a one-to-many relationship with SubCategory
+    private List<SubCategory> subCategories; // List of subcategories associated with this category
 
     //Constructors
     public Category() {
@@ -57,5 +62,13 @@ public class Category {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<SubCategory> getSubCategories() { // Returns the list of subcategories associated with this category
+        return subCategories;
+    }
+
+    public void setSubCategories(List<SubCategory> subCategories) { // Sets the list of subcategories for this category
+        this.subCategories = subCategories;
     }
 }
