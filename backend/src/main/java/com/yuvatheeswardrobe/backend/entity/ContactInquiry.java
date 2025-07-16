@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class ContactInquiry {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY) // Auto-incrementing primary key
-    private Long id;
+    private int id;
     @Column (nullable = false, length = 100) // Name cannot be null and limits to 100 characters
     private String name;
     @Column (nullable = false, length = 250) // Email cannot be null, limits to 255 characters
@@ -21,8 +21,7 @@ public class ContactInquiry {
     public ContactInquiry() {
     }
 
-    public ContactInquiry(Long id, String name, String email, String subject, String message, LocalDateTime received_at) {
-        this.id = id;
+    public ContactInquiry(String name, String email, String subject, String message, LocalDateTime received_at) {
         this.name = name;
         this.email = email;
         this.subject = subject;
@@ -30,7 +29,7 @@ public class ContactInquiry {
         this.received_at = received_at;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -54,9 +53,7 @@ public class ContactInquiry {
         return received_at;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id;}
 
     public void setName(String name) {
         this.name = name;

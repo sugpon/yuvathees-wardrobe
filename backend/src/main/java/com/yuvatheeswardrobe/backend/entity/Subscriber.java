@@ -9,7 +9,7 @@ public class Subscriber {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -24,14 +24,13 @@ public class Subscriber {
         // Default constructor is required by JPA
     }
 
-    public Subscriber(Long id, String email, LocalDateTime subscribedAt) {
-        this.id = id;
+    public Subscriber(String email, LocalDateTime subscribedAt) {
         this.email = email;
         this.subscribedAt = subscribedAt;
     }
 
     //Getters and Setters
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -43,7 +42,7 @@ public class Subscriber {
         return subscribedAt;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

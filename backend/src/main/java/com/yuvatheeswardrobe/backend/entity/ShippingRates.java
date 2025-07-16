@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 public class ShippingRates {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrementing primary key
-    private Long id;
+    private int id;
     @Column (nullable = false, length = 100) // Country cannot be null and limits to 100 characters
     private String country;
     @Column (nullable = false) // Cost per kg cannot be null
@@ -16,14 +16,13 @@ public class ShippingRates {
     public ShippingRates() {
     }
 
-    public ShippingRates(Long id, String country, Double cost_per_kg, Double jewelry_surcharge) {
-        this.id = id;
+    public ShippingRates(String country, Double cost_per_kg, Double jewelry_surcharge) {
         this.country = country;
         this.cost_per_kg = cost_per_kg;
         this.jewelry_surcharge = jewelry_surcharge;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -39,7 +38,7 @@ public class ShippingRates {
         return jewelry_surcharge;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

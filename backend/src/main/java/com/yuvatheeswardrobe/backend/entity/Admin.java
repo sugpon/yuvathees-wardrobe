@@ -6,7 +6,7 @@ public class Admin {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @Column (nullable = false, unique = true, length = 50) // Username cannot be null, must be unique, and limited to 50 characters
     private String username;
     @Column (nullable = false, length = 100) // Password cannot be null and limited to 100 characters
@@ -29,7 +29,7 @@ public class Admin {
         return username;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -49,7 +49,7 @@ public class Admin {
         this.email = email;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
