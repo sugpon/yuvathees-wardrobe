@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*; // Importing necessary Spring 
 import java.util.List; // Importing List for returning multiple categories
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/category")
 public class CategoryController {
 
     private final CategoryRepository categoryRepository;
