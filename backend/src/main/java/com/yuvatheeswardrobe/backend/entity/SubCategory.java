@@ -20,7 +20,7 @@ public class SubCategory {
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonBackReference // Prevents infinite recursion during JSON serialization
     private Category category; // Establishes a many-to-one relationship with Category
 
     //Constructors

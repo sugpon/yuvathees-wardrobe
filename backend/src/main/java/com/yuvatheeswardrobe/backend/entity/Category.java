@@ -18,7 +18,7 @@ public class Category {
     private String imageUrl;
 
     @OneToMany (mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true) // Establishes a one-to-many relationship with SubCategory
-    @JsonManagedReference
+    @JsonManagedReference // Prevents infinite recursion during JSON serialization
     private List<SubCategory> subCategories; // List of subcategories associated with this category
 
     //Constructors
