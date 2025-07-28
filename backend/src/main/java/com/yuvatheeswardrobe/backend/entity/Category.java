@@ -1,4 +1,5 @@
 package com.yuvatheeswardrobe.backend.entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*; // Importing JPA annotations for entity mapping
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class Category {
     private String imageUrl;
 
     @OneToMany (mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true) // Establishes a one-to-many relationship with SubCategory
+    @JsonManagedReference
     private List<SubCategory> subCategories; // List of subcategories associated with this category
 
     //Constructors

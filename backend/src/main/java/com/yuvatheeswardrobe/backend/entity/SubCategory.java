@@ -1,4 +1,5 @@
 package com.yuvatheeswardrobe.backend.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*; // Importing JPA annotations for entity mapping
 
 @Entity  // Marks this class as a JPA entity, meaning Hibernate will map it to a table
@@ -19,6 +20,7 @@ public class SubCategory {
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @JsonBackReference
     private Category category; // Establishes a many-to-one relationship with Category
 
     //Constructors
