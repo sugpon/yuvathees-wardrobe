@@ -2,6 +2,7 @@ package com.yuvatheeswardrobe.backend.controller;
 
 import com.yuvatheeswardrobe.backend.entity.SubCategory;
 import com.yuvatheeswardrobe.backend.repository.SubCategoryRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class SubCategoryController {
     }
 
     @GetMapping("/{id}")
-    public SubCategory getSubCategoryById(@PathVariable int id) {
-        return subCategoryRepository.findById(id).orElse(null);
+    public ResponseEntity<SubCategory> getSubCategoryById(@PathVariable int id) {
+        return subCategoryRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
