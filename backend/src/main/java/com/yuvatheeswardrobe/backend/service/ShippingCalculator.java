@@ -18,6 +18,15 @@ public class ShippingCalculator {
     }
 
     public double calculateShipping(String country, double weight, boolean hasJewelry) {
+        if("India".equalsIgnoreCase(country)) {
+            // For India, no shipping charges
+            return 0.0;
+        }
+
+        if (weight <= 0) {
+            throw new IllegalArgumentException("Weight must be greater than zero.");
+        }
+
         ShippingRates rate = shippingRatesRepository.findByCountry(country);
         if (rate == null) {
             throw new IllegalArgumentException("Shipping rate not found for country: " + country);
