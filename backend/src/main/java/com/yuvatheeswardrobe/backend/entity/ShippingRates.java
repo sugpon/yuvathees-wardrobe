@@ -9,17 +9,14 @@ public class ShippingRates {
     @Column (nullable = false, length = 100) // Country cannot be null and limits to 100 characters
     private String country;
     @Column (nullable = false) // Cost per kg cannot be null
-    private Double cost_per_kg;
-    @Column (nullable = false) // Jewelry surcharge cannot be null
-    private Double jewelry_surcharge;
+    private Double costPerKg;
 
     public ShippingRates() {
     }
 
-    public ShippingRates(String country, Double cost_per_kg, Double jewelry_surcharge) {
+    public ShippingRates(String country, Double costPerKg) {
         this.country = country;
-        this.cost_per_kg = cost_per_kg;
-        this.jewelry_surcharge = jewelry_surcharge;
+        this.costPerKg = costPerKg;
     }
 
     public int getId() {
@@ -30,12 +27,8 @@ public class ShippingRates {
         return country;
     }
 
-    public Double getCost_per_kg() {
-        return cost_per_kg;
-    }
-
-    public Double getJewelry_surcharge() {
-        return jewelry_surcharge;
+    public Double getCostPerKg() {
+        return costPerKg;
     }
 
     public void setId(int id) {
@@ -46,11 +39,7 @@ public class ShippingRates {
         this.country = country;
     }
 
-    public void setCost_per_kg(Double cost_per_kg) {
-        this.cost_per_kg = cost_per_kg;
-    }
-
-    public void setJewelry_surcharge(Double jewelry_surcharge) {
-        this.jewelry_surcharge = jewelry_surcharge;
+    public void setCostPerKg(Double costPerKg) {
+        this.costPerKg = costPerKg;
     }
 }

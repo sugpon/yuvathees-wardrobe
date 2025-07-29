@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository; // Importing JpaRe
 
 public interface ShippingRatesRepository extends JpaRepository<ShippingRates, Integer>{ // Extending JpaRepository to provide CRUD operations for ShippingRates entity
     // Additional query methods can be defined here if needed
+    ShippingRates findByCountry(String country); // Custom method to find shipping rates by country
 }
