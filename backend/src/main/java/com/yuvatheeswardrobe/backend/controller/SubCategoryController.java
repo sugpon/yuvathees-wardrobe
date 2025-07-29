@@ -20,13 +20,13 @@ public class SubCategoryController extends AdminAccessController {
         this.subCategoryRepository = subCategoryRepository;
     }
 
-    // GET all subcategories
+    // GET all subcategories (open access)
     @GetMapping
     public List<SubCategory> getAllSubCategories() {
         return subCategoryRepository.findAll();
     }
 
-    // GET subcategory by ID
+    // GET subcategory by ID (open access)
     @GetMapping("/{id}")
     public ResponseEntity<SubCategory> getSubCategoryById(@PathVariable int id) {
         Optional<SubCategory> subCategory = subCategoryRepository.findById(id);
@@ -36,28 +36,31 @@ public class SubCategoryController extends AdminAccessController {
     // POST new subcategory - requires Admin login
     @PostMapping
     public ResponseEntity<?> postSubCategory(@RequestBody SubCategory subCategory, HttpSession session) {
-        ResponseEntity<?> authCheck = checkAdminLoggedIn(); // Check if admin is logged in using the method from AdminAccessController
-        if (authCheck != null) return authCheck; // Check if admin is logged in
-        SubCategory savedSubCategory = subCategoryRepository.save(subCategory); // Save the new subcategory
-        return ResponseEntity.ok(savedSubCategory); // Return the saved subcategory
+        ResponseEntity<?> authCheck = checkAdminLoggedIn(session); // Use inherited method from AdminAccessController
+        if (authCheck != null) return authCheck;
+
+        SubCategory savedSubCategory = subCategoryRepository.save(subCategory);
+        return ResponseEntity.ok(savedSubCategory);
     }
 
     // PUT (update) subcategory - requires Admin login
     @PutMapping("/{id}")
     public ResponseEntity<?> updateSubCategory(@PathVariable int id, @RequestBody SubCategory subCategory, HttpSession session) {
-        ResponseEntity<?> authCheck = checkAdminLoggedIn(); // Check if admin is logged in using the method from AdminAccessController
-        if (authCheck != null) return authCheck; // Check if admin is logged in
-        subCategory.setId(id); // Set the ID of the subcategory to update
-        SubCategory updatedSubCategory = subCategoryRepository.save(subCategory); // Save the updated subcategory
-        return ResponseEntity.ok(updatedSubCategory); // Return the updated subcategory
+        ResponseEntity<?> authCheck = checkAdminLoggedIn(session);
+        if (authCheck != null) return authCheck;
+
+        subCategory.setId(id);
+        SubCategory updatedSubCategory = subCategoryRepository.save(subCategory);
+        return ResponseEntity.ok(updatedSubCategory);
     }
 
     // DELETE subcategory - requires Admin login
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSubCategory(@PathVariable int id, HttpSession session) {
-        ResponseEntity<?> authCheck = checkAdminLoggedIn(); // Check if admin is logged in using the method from AdminAccessController
-        if (authCheck != null) return authCheck; // Check if admin is logged in
-        subCategoryRepository.deleteById(id); // Delete the subcategory by ID
-        return ResponseEntity.ok("SubCategory with ID " + id + " deleted successfully."); // Return a success message
+        ResponseEntity<?> authCheck = checkAdminLoggedIn(session);
+        if (authCheck != null) return authCheck;
+
+        subCategoryRepository.deleteById(id);
+        return ResponseEntity.ok("SubCategory with ID " + id + " deleted successfully.");
     }
 }

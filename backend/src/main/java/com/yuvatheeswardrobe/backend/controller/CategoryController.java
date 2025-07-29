@@ -2,6 +2,7 @@ package com.yuvatheeswardrobe.backend.controller;
 
 import com.yuvatheeswardrobe.backend.entity.Category;
 import com.yuvatheeswardrobe.backend.repository.CategoryRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,34 +18,34 @@ public class CategoryController extends AdminAccessController {
         this.categoryRepository = categoryRepository;
     }
 
-    // GET all categories - open for everyone
+    // GET all categories - open for everyone (no session required)
     @GetMapping
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
-    // GET category by ID - open for everyone
+    // GET category by ID - open for everyone (no session required)
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
         return categoryRepository.findById(id)
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build()); // Return 404 if category not found
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    // POST - admin only
+    // POST - admin only (requires session to check admin logged in)
     @PostMapping
-    public ResponseEntity<?> postCategory(@RequestBody Category category) {
-        ResponseEntity<?> authCheck = checkAdminLoggedIn();
-        if (authCheck != null) return authCheck; // Check if admin is logged in
+    public ResponseEntity<?> postCategory(@RequestBody Category category, HttpSession session) {
+        ResponseEntity<?> authCheck = checkAdminLoggedIn(session);
+        if (authCheck != null) return authCheck;
 
         Category saved = categoryRepository.save(category);
         return ResponseEntity.ok(saved);
     }
 
-    // PUT - admin only
+    // PUT - admin only (requires session)
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@PathVariable int id, @RequestBody Category category) {
-        ResponseEntity<?> authCheck = checkAdminLoggedIn();
+    public ResponseEntity<?> updateCategory(@PathVariable int id, @RequestBody Category category, HttpSession session) {
+        ResponseEntity<?> authCheck = checkAdminLoggedIn(session);
         if (authCheck != null) return authCheck;
 
         category.setId(id);
@@ -52,10 +53,10 @@ public class CategoryController extends AdminAccessController {
         return ResponseEntity.ok(updated);
     }
 
-    // DELETE - admin only
+    // DELETE - admin only (requires session)
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCategory(@PathVariable int id) {
-        ResponseEntity<?> authCheck = checkAdminLoggedIn();
+    public ResponseEntity<?> deleteCategory(@PathVariable int id, HttpSession session) {
+        ResponseEntity<?> authCheck = checkAdminLoggedIn(session);
         if (authCheck != null) return authCheck;
 
         categoryRepository.deleteById(id);
