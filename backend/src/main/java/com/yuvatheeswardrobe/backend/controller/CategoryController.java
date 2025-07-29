@@ -1,51 +1,64 @@
 package com.yuvatheeswardrobe.backend.controller;
 
-import com.yuvatheeswardrobe.backend.entity.Category; // Importing the Category entity
-import com.yuvatheeswardrobe.backend.repository.CategoryRepository; // Importing the CategoryRepository for CRUD operations
+import com.yuvatheeswardrobe.backend.entity.Category;
+import com.yuvatheeswardrobe.backend.repository.CategoryRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*; // Importing necessary Spring annotations for RESTful web services
-import java.util.List; // Importing List for returning multiple categories
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
-public class CategoryController {
+public class CategoryController extends AdminAccessController {
 
     private final CategoryRepository categoryRepository;
 
-    // Constructor injection for CategoryRepository
-    public CategoryController(CategoryRepository categoryRepository) { // Constructor to inject the CategoryRepository dependency
-        this.categoryRepository = categoryRepository; // Initializing the categoryRepository
+    public CategoryController(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
-    //GET all categories
+    // GET all categories - open for everyone
     @GetMapping
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
-    //GET a single category by ID
+    // GET category by ID - open for everyone
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
-        return categoryRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()); // Fetching a category by its ID, returning null if not found
+        return categoryRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build()); // Return 404 if category not found
     }
 
-    //POST - create new category
+    // POST - admin only
     @PostMapping
-    public Category postCategory(@RequestBody Category category) {
-        return categoryRepository.save(category); // Saving the new category to the repository
+    public ResponseEntity<?> postCategory(@RequestBody Category category) {
+        ResponseEntity<?> authCheck = checkAdminLoggedIn();
+        if (authCheck != null) return authCheck; // Check if admin is logged in
+
+        Category saved = categoryRepository.save(category);
+        return ResponseEntity.ok(saved);
     }
 
-    //PUT - update category by ID
+    // PUT - admin only
     @PutMapping("/{id}")
-    public Category updateCategory(@PathVariable int id, @RequestBody Category category) {
-        category.setId(id); // force the ID to be what's in the path
-        return categoryRepository.save(category); // Saving the updated category to the repository
+    public ResponseEntity<?> updateCategory(@PathVariable int id, @RequestBody Category category) {
+        ResponseEntity<?> authCheck = checkAdminLoggedIn();
+        if (authCheck != null) return authCheck;
+
+        category.setId(id);
+        Category updated = categoryRepository.save(category);
+        return ResponseEntity.ok(updated);
     }
 
-    //DELETE category by ID
+    // DELETE - admin only
     @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable int id) {
-        categoryRepository.deleteById(id); // Deleting the category by its ID from the repository
+    public ResponseEntity<?> deleteCategory(@PathVariable int id) {
+        ResponseEntity<?> authCheck = checkAdminLoggedIn();
+        if (authCheck != null) return authCheck;
+
+        categoryRepository.deleteById(id);
+        return ResponseEntity.ok("Category deleted successfully");
     }
 }
-
