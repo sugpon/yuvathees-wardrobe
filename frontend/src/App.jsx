@@ -20,7 +20,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
           <Route path="/shipping" element={<Shipping />} />
-           <Route path="/contactus" element={<ContactUs isAdmin={true} />} /> {/* toggle to true to test admin */}
+           <Route path="/contactus" element={<ContactUs isAdmin={false} />} /> {/* toggle to true to test admin */}
         </Routes>
         <Footer />
       </BrowserRouter>

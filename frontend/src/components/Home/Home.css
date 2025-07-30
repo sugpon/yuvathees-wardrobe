@@ -16,14 +16,16 @@
   border-radius: 8px;       /* rounded corners */
 }
 
+/* THIS IS KEY: stack slideshow and login vertically */
 .leftSide {
   display: flex;
   flex-direction: column;
-  align-items: center;      /* center content */
-  justify-content: flex-start; /* align top */
+  align-items: center;
+  gap: 2rem;  /* space between slideshow and login */
 }
 
 .rightSide {
+  padding-top: 3rem; /* space for header */
   text-align: justify;      /* justify text */
   line-height: 1.6;         /* line spacing */
   font-size: 1.05rem;       /* font size */
@@ -47,7 +49,7 @@
   overflow: hidden;         /* clip overflow */
   border-radius: 10px;      /* rounded corners */
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  margin-top: 5.5rem;
+  margin-top: 3rem;
 }
 
 .slideshowContainer img.active {
@@ -63,6 +65,7 @@
 .heading {
   font-size: 2rem;          /* large */
   font-weight: 700;         /* bold */
+  margin-top: 2rem; /* space above */
   margin-bottom: 0.5rem;
   text-align: left;
 }
@@ -73,66 +76,97 @@
   font-style: italic;
 }
 
+/* Admin Login Box Styles */
+.adminLoginBox {
+  background-color: black;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+  width: 360px;
+  max-width: none;
+  color: goldenrod;
+  font-weight: 600;
+}
+
+.adminLoginBox h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.adminLoginForm label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.adminLoginForm input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid goldenrod;
+  border-radius: 6px;
+  background-color: black;
+  color: goldenrod;
+  font-size: 1rem;
+}
+
+.adminLoginForm input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 5px #ffd700;
+}
+
+.adminLoginForm button {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: goldenrod;
+  border: none;
+  border-radius: 6px;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.adminLoginForm button:hover {
+  background-color:  rgb(255, 0, 157);
+}
+
+.loginMessage {
+  margin-top: 1rem;
+  color: #00ff00;
+  font-weight: 600;
+}
+
+.guestLink {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: goldenrod;
+}
+
+.guestLink a {
+  color: goldenrod;
+  text-decoration: underline;
+}
+
+.guestLink a:hover {
+  color: rgb(255, 0, 157);
+}
+
 /* Mobile <=600px */
 @media (max-width: 600px) {
-  .header-container {
-    flex-direction: column; /* stack */
-    align-items: center;    
-    text-align: center;
+  .homeSection {
+    flex-direction: column;
     padding: 1rem;
   }
 
-  .header-logo img {
-    height: 8rem;           /* smaller logo */
-    margin-bottom: 1rem;
+  .leftSide, .rightSide {
+    max-width: 100%;
+    min-width: auto;
   }
 
-  .header-2, .nav-links {
-    flex-direction: column; /* vertical nav */
-    align-items: center;
+  .slideshowContainer {
     width: 100%;
-  }
-
-  .nav-links {
-    gap: 1rem;
-  }
-
-  .nav-links a {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-}
-
-/* Tablets <=900px */
-@media (max-width: 900px) {
-  .header-container {
-    flex-direction: column; 
-    align-items: center;
-    text-align: center;
-    padding: 1rem 2rem;
-  }
-
-  .header-logo img {
-    height: 12rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .header-2 {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .nav-links {
-    flex-direction: row;    /* horizontal nav */
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: auto;
-  }
-
-  .nav-links a {
-    font-size: 1.3rem;
-    margin: 0;
+    height: auto;
   }
 }
