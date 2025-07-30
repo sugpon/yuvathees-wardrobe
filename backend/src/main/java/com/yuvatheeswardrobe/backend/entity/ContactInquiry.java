@@ -21,12 +21,12 @@ public class ContactInquiry {
     public ContactInquiry() {
     }
 
-    public ContactInquiry(String name, String email, String subject, String message, LocalDateTime received_at) {
+    public ContactInquiry(String name, String email, String subject, String message) {
         this.name = name;
         this.email = email;
         this.subject = subject;
         this.message = message;
-        this.received_at = received_at;
+        this.received_at = LocalDateTime.now();
     }
 
     public int getId() {
@@ -71,7 +71,11 @@ public class ContactInquiry {
         this.message = message;
     }
 
-    public void setReceived_at(LocalDateTime received_at) {
-        this.received_at = received_at;
+    @PrePersist
+    protected void onCreate() {
+        if (this.received_at == null) {
+            this.received_at = LocalDateTime.now();
+        }
     }
+
 }

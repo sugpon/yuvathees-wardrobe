@@ -1,4 +1,4 @@
-import{ BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
+import{ BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import AboutUs from './components/AboutUs/AboutUs'
@@ -20,7 +20,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
           <Route path="/shipping" element={<Shipping />} />
-          <Route path="/contactus" element={<ContactUs />} />
+           <Route path="/contactus" element={<ContactUs isAdmin={true} />} /> {/* toggle to true to test admin */}
         </Routes>
         <Footer />
       </BrowserRouter>

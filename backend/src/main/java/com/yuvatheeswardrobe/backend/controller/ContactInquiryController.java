@@ -19,7 +19,7 @@ public class ContactInquiryController extends AdminAccessController {
         this.contactInquiryRepository = contactInquiryRepository;
     }
 
-    // PUT - submit inquiry (open for guests)
+    // POST - submit inquiry (open for guests)
     @PostMapping
     public ResponseEntity<ContactInquiry> submitInquiry(@RequestBody ContactInquiry inquiry) {
         ContactInquiry saved = contactInquiryRepository.save(inquiry);
@@ -46,8 +46,8 @@ public class ContactInquiryController extends AdminAccessController {
         return inquiry.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // POST - admin only (update inquiry)
-    @PostMapping("/{id}")
+    // PUT - admin only (update inquiry)
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateInquiry(@PathVariable int id, @RequestBody ContactInquiry inquiry, HttpSession session) {
         ResponseEntity<?> authCheck = checkAdminLoggedIn(session);
         if (authCheck != null) return authCheck;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import shippingData from "../../mockData/shippingData";
 import ShippingCalculator from "./ShippingCalculator";
-import "./Shipping.css";
+import "../Shipping/Shipping.css";
 
 const Shipping = () => {
   const [selectedCountry, setSelectedCountry] = useState(""); // State to track selected country
