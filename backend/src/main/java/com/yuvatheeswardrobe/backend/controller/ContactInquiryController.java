@@ -20,7 +20,7 @@ public class ContactInquiryController extends AdminAccessController {
     }
 
     // PUT - submit inquiry (open for guests)
-    @PutMapping
+    @PostMapping
     public ResponseEntity<ContactInquiry> submitInquiry(@RequestBody ContactInquiry inquiry) {
         ContactInquiry saved = contactInquiryRepository.save(inquiry);
         return ResponseEntity.ok(saved);
