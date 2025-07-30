@@ -39,8 +39,8 @@ public class SubscriberController extends AdminAccessController {
         return subscriber.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // PUT or POST new subscriber - open for guests (no admin check)
-    @PutMapping
+    // POST new subscriber - open for guests (no admin check)
+    @PostMapping
     public ResponseEntity<Subscriber> saveOrUpdateSubscriber(@RequestBody Subscriber subscriber) {
         Subscriber saved = subscriberRepository.save(subscriber);
         return ResponseEntity.ok(saved);
