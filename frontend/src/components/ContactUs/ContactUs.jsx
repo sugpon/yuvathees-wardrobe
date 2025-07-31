@@ -4,10 +4,11 @@ import '../ContactUs/ContactUs.css';
 import GuestContactUs from '../GuestUser/GuestContactUs';
 import AdminContactList from '../AdminUser/AdminContactUs';
 
-export default function ContactPage({ isAdmin }) {
+function ContactPage(props) {
   return (
     <div>
-      {isAdmin ? <AdminContactList /> : <GuestContactUs />}
+      {props.isLoggedIn ? <AdminContactList /> : <GuestContactUs />}
     </div>
   );
 }
+export default ContactPage;

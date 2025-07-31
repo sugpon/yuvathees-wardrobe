@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../Home/Home.css";
 import "../../index.css";
+import Button from "../Button/Button.jsx";
 
 const images = [
   "/images/Animation1.jpg",
@@ -33,11 +34,11 @@ const images = [
   "/images/Animation28.jpg",
 ];
 
-export default function Home() {
+export default function Home(props) {
+  const { isLoggedIn, setIsLoggedIn } = props; // Destructure props to get isLoggedIn and setIsLoggedIn
   const [currentIndex, setCurrentIndex] = useState(0);
   const [adminUsername, setAdminUsername] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
-  const[isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginMessage, setLoginMessage] = useState("");
 
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function Home() {
       });
 
       if (response.ok) {
-        setIsLoggedIn(true);
+        props.setIsLoggedIn(true);
         setAdminUsername(""); // Clear username after login
         setAdminPassword(""); // Clear password after login
         setLoginMessage("Login successful! You can now access admin features.");
@@ -99,10 +100,10 @@ export default function Home() {
         </div>
 
       <div className="adminLoginBox">
-        <p className="guestLink">
+        <div className="guestLink">
             <h3> Are you a New/ Returning Customer?<br /><a href="/Services">Click here</a></h3>
-        </p>
-        {!isLoggedIn ? (
+        </div>
+        {!props.isLoggedIn ? (
           <>
           Admin Login
               <form onSubmit={handleAdminLogin} className="adminLoginForm">
@@ -120,7 +121,7 @@ export default function Home() {
                   onChange={(e) => setAdminPassword(e.target.value)}
                   required
                 />
-                <button type="submit">Login</button>
+                <Button label="Login" type="submit"/>
                 {loginMessage && <p className="loginMessage">{loginMessage}</p>}
               </form>
             </>
@@ -128,6 +129,7 @@ export default function Home() {
             <div className="welcome-message">
             <h3>Welcome, Admin!</h3>
             {loginMessage && <p className="loginMessage">{loginMessage}</p>}
+            <Button onClick= {() => props.setIsLoggedIn(false)} label="Logout" />
             </div>)
         }
         </div>
