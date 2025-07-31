@@ -17,6 +17,21 @@ export default function AdminContactUs() {
       .catch(error => console.error('Error loading inquiries:', error));
   }, []);
 
+  const handleDelete = (id) => {
+    if (!window.confirm("Are you sure you want to delete this subscriber?")) return;
+
+    fetch(`http://localhost:8080/contactinquiry/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    })
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to delete Inquiry");
+        // Remove deleted Inquiry from state to update UI
+        setInquiries(prev => prev.filter(inq => inq.id !== id));
+      })
+      .catch(error => console.error(error));
+  };
+
   return (
     <div>
       <h2>Contact Inquiries</h2>
@@ -24,6 +39,8 @@ export default function AdminContactUs() {
         <thead>
           <tr>
             <th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Received At</th>
+          <th>Respond</th>
+          <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +54,24 @@ export default function AdminContactUs() {
               <td>{inq.subject}</td>
               <td>{inq.message}</td>
               <td>{new Date(inq.received_at).toLocaleString()}</td>
+              <td>
+               <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(inq.email)}&su=${encodeURIComponent("RE: " + inq.subject)}&body=${encodeURIComponent(
+                    `Hi ${inq.name},\n\n> ${inq.message}\n\n-----------------------\nThankyou for your interest in Yuvathees Wardrobe. We are writing to you regarding your inquiry.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Reply to ${inq.email}`}
+                >
+                 <Button label="Reply"/>
+                </a>
+              </td>
+              <td>
+                <Button label="Delete"
+                        onClick={() => handleDelete(inq.id)}
+                        className="deleteButton"
+                />
+              </td>
             </tr>
           ))}
         </tbody>

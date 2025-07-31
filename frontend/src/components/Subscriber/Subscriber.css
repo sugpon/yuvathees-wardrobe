@@ -1,15 +1,45 @@
-.contactSection {
+.subscriberSection {
   padding: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: center; /* Center the form horizontally */
 }
 
-.contactSection h2 {
+.subscriberSection h2 {
   font-size: 2rem; /* Larger font size for visibility */
   margin-bottom: 1.5rem; /* Space below the heading */
 }
 
-.contactForm {
+.subscriberTable {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 2rem;
+  border-collapse: collapse;
+  background-color: black;
+  color: goldenrod;
+  box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.subscriberTable th,
+.subscriberTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid goldenrod;
+}
+
+.subscriberTable th {
+  background-color: #222;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.subscriberTable tbody tr:hover {
+  background-color: #333;
+}
+
+.subscriberForm {
   background-color: black; /* Black background to match site theme */
   padding: 3rem; /* Spacious padding inside the form */
   border-radius: 12px; /* Rounded corners for a smooth look */
@@ -21,13 +51,13 @@
   gap: 1rem; /* Even spacing between elements */
 }
 
-.contactForm label {
+.subscriberForm label {
   font-weight: bold;
   font-size: 1.05rem; /* Consistent font size for labels */
 }
 
-.contactForm input,
-.contactForm textarea {
+.subscriberForm input,
+.subscriberForm textarea {
   padding: 0.75rem;
   border: 1px solid goldenrod; /* Goldenrod border to match theme */
   border-radius: 5px;
@@ -37,8 +67,8 @@
   color: goldenrod; /* Goldenrod text inside inputs */
 }
 
-.contactForm input:focus,
-.contactForm textarea:focus {
+.subscriberForm input:focus,
+.subscriberForm textarea:focus {
   outline: none;
   border-color: goldenrod; /* Highlight border on focus */
   box-shadow: 0 0 5px goldenrod; /* Glow effect on focus */
@@ -55,17 +85,17 @@
 .thankYouMessage {
   margin-top: 1rem;
   color: green;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Media query for tablets and smaller desktops */
 @media (max-width: 900px) {
-  .contactForm {
+  .subscriberForm {
     max-width: 350px; /* Slightly smaller max width */
     padding: 2.5rem;
   }
-  .contactForm input,
-  .contactForm textarea {
+  .subscriberForm input,
+  .subscriberForm textarea {
     font-size: 0.95rem; /* Slightly smaller font */
   }
   .submitBtn {
@@ -76,15 +106,15 @@
 
 /* Media query for mobile devices */
 @media (max-width: 600px) {
-  .contactSection {
+  .subscriberSection {
     padding: 1rem; /* Less padding on small screens */
   }
-  .contactForm {
+  .subscriberForm {
     max-width: 100%; /* Full width on very small screens */
     padding: 2rem 1.5rem;
   }
-  .contactForm input,
-  .contactForm textarea {
+  .subscriberForm input,
+  .subscriberForm textarea {
     font-size: 0.9rem; /* Smaller font for mobile */
   }
   .submitBtn {
