@@ -1,9 +1,10 @@
 import Button from "../Button/Button.jsx";
+import "../Shipping/Shipping.css";
 
 const ShippingCalculator = (props) => { // props to handle state and functions from parent component
   return (
     <div className="shipping-calculator">
-      <h2>Shipping Calculator</h2>
+      <h3>🚚 Shipping Calculator 🚚</h3>
 
       <label htmlFor="country">Select Country:</label>
       <select
@@ -12,8 +13,9 @@ const ShippingCalculator = (props) => { // props to handle state and functions f
         onChange={props.handleCountrySelect}
       >
         <option value="" disabled>-- Select a country --</option>
-        <option value="India">India</option>
-        <option value="USA">USA</option>
+        {props.availableCountries?.map((country) => (
+          <option key={country} value={country}>{country}</option>
+        ))}
       </select>
 
       <label htmlFor="weight">Enter Weight (kg):</label>

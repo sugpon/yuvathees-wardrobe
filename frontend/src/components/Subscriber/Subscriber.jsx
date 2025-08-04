@@ -1,6 +1,6 @@
 import React from 'react';
-import GuestSubscriber from '../GuestUser/GuestSubscriber';
-import AdminSubscriber from '../AdminUser/AdminSubscriber';
+import GuestSubscriber from './GuestSubscriber';
+import AdminSubscriber from './AdminSubscriber';
 
 function Subscriber({ isLoggedIn }) {
   return (
