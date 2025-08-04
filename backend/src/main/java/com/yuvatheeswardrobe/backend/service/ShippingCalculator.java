@@ -10,7 +10,7 @@ public class ShippingCalculator {
 
     private final ShippingRatesRepository shippingRatesRepository;
 
-    @Value("${app.jewelry.surcharge}")
+    //@Value("${app.jewelry.surcharge}")
     private double jewelrySurcharge;
 
     public ShippingCalculator(ShippingRatesRepository shippingRatesRepository) {

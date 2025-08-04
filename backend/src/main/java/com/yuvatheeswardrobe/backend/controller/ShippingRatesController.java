@@ -12,16 +12,15 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/shipping")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173") // Adjust as needed for your frontend
 public class ShippingRatesController extends AdminAccessController {
 
     private final ShippingRatesRepository shippingRatesRepository;
-    private final ShippingCalculator shippingCalculator;
+    //private final ShippingCalculator shippingCalculator;
 
-    public ShippingRatesController(ShippingRatesRepository shippingRatesRepository,
-                                   ShippingCalculator shippingCalculator) {
+    public ShippingRatesController(ShippingRatesRepository shippingRatesRepository) {
         this.shippingRatesRepository = shippingRatesRepository;
-        this.shippingCalculator = shippingCalculator;
+        //this.shippingCalculator = shippingCalculator;
     }
 
     // GET all shipping rates - open for all
@@ -82,18 +81,18 @@ public class ShippingRatesController extends AdminAccessController {
         }
     }
 
-    // POST /calculate - open for all, no auth needed
-    @PostMapping("/calculate")
-    public ResponseEntity<Double> calculateShippingCost(
-            @RequestParam String country,
-            @RequestParam double weight,
-            @RequestParam(required = false, defaultValue = "false") boolean hasJewelry
-    ) {
-        try {
-            double totalCost = shippingCalculator.calculateShipping(country, weight, hasJewelry);
-            return ResponseEntity.ok(totalCost);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
+//    // POST /calculate - open for all, no auth needed
+//    @PostMapping("/calculate")
+//    public ResponseEntity<Double> calculateShippingCost(
+//        @RequestParam String country,
+//        @RequestParam double weight,
+//        @RequestParam(required = false, defaultValue = "false") boolean hasJewelry
+//    ) {
+//    try {
+//        double totalCost = shippingCalculator.calculateShipping(country, weight, hasJewelry);
+//        return ResponseEntity.ok(totalCost);
+//    } catch (IllegalArgumentException e) {
+//        return ResponseEntity.badRequest().build();
+//    }
+//    }
 }
