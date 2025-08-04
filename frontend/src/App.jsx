@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
       <Header />
         <Routes>
-          <Route path="/" element={<Home isLoggedin= {isLoggedIn} setIsLoggedIn= {setIsLoggedIn} />} />
+          <Route path="/" element={<Home isLoggedIn= {isLoggedIn} setIsLoggedIn= {setIsLoggedIn} />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
           <Route path="/shipping" element={<Shipping isLoggedIn={isLoggedIn} />} />

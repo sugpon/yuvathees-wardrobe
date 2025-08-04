@@ -138,18 +138,18 @@
   font-weight: 600;
 }
 
-.guestLink {
+.adminLoginBox {
   margin-top: 1rem;
   font-size: 0.9rem;
   color: goldenrod;
 }
 
-.guestLink a {
+.adminLoginBox a {
   color: goldenrod;
   text-decoration: underline;
 }
 
-.guestLink a:hover {
+.adminLoginBox a:hover {
   color: rgb(255, 0, 157);
 }
 

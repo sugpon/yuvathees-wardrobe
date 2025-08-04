@@ -35,7 +35,6 @@ const images = [
 ];
 
 export default function Home(props) {
-  const { isLoggedIn, setIsLoggedIn } = props; // Destructure props to get isLoggedIn and setIsLoggedIn
   const [currentIndex, setCurrentIndex] = useState(0);
   const [adminUsername, setAdminUsername] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
@@ -100,11 +99,9 @@ export default function Home(props) {
         </div>
 
       <div className="adminLoginBox">
-        <div className="guestLink">
-            <h3> Are you a New/ Returning Customer?<br /><a href="/Services">Click here</a></h3>
-        </div>
         {!props.isLoggedIn ? (
           <>
+          <h3> Are you a New/ Returning Customer?<br /><a href="/Services">Click here</a></h3>
           Admin Login
               <form onSubmit={handleAdminLogin} className="adminLoginForm">
                 <label>Username:</label>
@@ -129,7 +126,7 @@ export default function Home(props) {
             <div className="welcome-message">
             <h3>Welcome, Admin!</h3>
             {loginMessage && <p className="loginMessage">{loginMessage}</p>}
-            <Button onClick= {() => props.setIsLoggedIn(false)} label="Logout" />
+           
             </div>)
         }
         </div>
