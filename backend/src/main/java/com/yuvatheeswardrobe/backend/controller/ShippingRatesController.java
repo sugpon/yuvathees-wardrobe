@@ -16,11 +16,9 @@ import java.util.Optional;
 public class ShippingRatesController extends AdminAccessController {
 
     private final ShippingRatesRepository shippingRatesRepository;
-    //private final ShippingCalculator shippingCalculator;
 
     public ShippingRatesController(ShippingRatesRepository shippingRatesRepository) {
         this.shippingRatesRepository = shippingRatesRepository;
-        //this.shippingCalculator = shippingCalculator;
     }
 
     // GET all shipping rates - open for all
@@ -60,6 +58,7 @@ public class ShippingRatesController extends AdminAccessController {
             ShippingRates existingRate = optionalRate.get();
             existingRate.setCountry(updatedRate.getCountry());
             existingRate.setCostPerKg(updatedRate.getCostPerKg());
+            existingRate.setJewelrySurcharge(updatedRate.getJewelrySurcharge());
             ShippingRates saved = shippingRatesRepository.save(existingRate);
             return ResponseEntity.ok(saved);
         } else {
