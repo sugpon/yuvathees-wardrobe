@@ -16,7 +16,7 @@
   border-radius: 8px;       /* rounded corners */
 }
 
-/* THIS IS KEY: stack slideshow and login vertically */
+/*stack slideshow and login vertically */
 .leftSide {
   display: flex;
   flex-direction: column;

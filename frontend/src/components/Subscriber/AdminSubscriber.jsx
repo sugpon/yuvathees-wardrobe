@@ -35,7 +35,7 @@ function AdminSubscriber() {
 
   return (
     <div className="subscriberSection">
-      <h2>Subscribers List</h2>
+      <h2>Subscribers List(Admin Only)</h2>
       <table className="subscriberTable">
     <thead>
         <tr>

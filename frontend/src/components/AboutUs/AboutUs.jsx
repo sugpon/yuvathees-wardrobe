@@ -12,7 +12,7 @@ const AboutUs = () => {
         </p>
 
         <p>
-          From the very beginning, the goal was never just to sell. It was to create a space where shopping feels like connection, where each product tells a story and every interaction builds trust. Yuvathees Wardrobe was founded with the idea that tradition should be honored without compromise, and that customers—especially those living away from home—deserve access to reliable, authentic options that represent who they are.
+          From the very beginning, the goal was never just to sell. It was to create a space where shopping feels like connection, where each product tells a story and every interaction builds trust. Yuvathees Wardrobe was founded with the idea that tradition should be honored without compromise, and that customers, especially those living away from home deserve access to reliable, authentic options that represent who they are.
         </p>
 
         <p>
@@ -20,7 +20,7 @@ const AboutUs = () => {
         </p>
 
         <p>
-          Over time, what began as a family-driven initiative has grown into a close-knit community. Many of our earliest customers have become friends, and their families continue to return—not just for the products, but for the personalized experience we’ve come to be known for.
+          Over time, what began as a family-driven initiative has grown into a close-knit community. Many of our earliest customers have become friends, and their families continue to return not just for the products, but for the personalized experience we’ve come to be known for.
         </p>
 
         <p>

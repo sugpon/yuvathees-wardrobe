@@ -33,8 +33,8 @@ export default function AdminContactUs() {
   };
 
   return (
-    <div>
-      <h2>Contact Inquiries (Admin Only)</h2>
+    <div className="contactSection">
+      <h2>Contact Inquiries(Admin Only)</h2> <br />
       <table border="1" cellPadding="8" style={{ borderCollapse: 'collapse', width: '100%' }}>
         <thead>
           <tr>
