@@ -7,7 +7,7 @@
 
 Yuvathees Wardrobe is a vibrant brand celebrating India’s rich textile heritage by connecting customers with authentic handwoven garments. This project is a full-stack web application designed to showcase the brand story, provide product information, and enable easy customer interaction — all wrapped in a smooth, user-friendly experience.
 
-The frontend is built using React framework and offers a polished, responsive, single-page application (SPA) where visitors can explore the brand, services, shipping info, and contact options. The backend, powered by Spring Boot, handles admin authentication and supports subscriptions, contact enquiries and shipping data.
+The frontend is built using React framework and offers a polished, responsive, single-page application (SPA) where visitors can explore the brand, services, shipping info, and contact options. The backend, powered by Spring Boot, handles controllers and repositroes with relevant entitiees. Supports subscriptions, contact enquiries and dynamic shipping data all retrieved from Databses using codefirst approach.
 
 Whether you’re a new visitor wanting to learn about the brand or the admin managing content behind the scenes, this app aims to deliver a seamless experience.
 
@@ -24,9 +24,8 @@ Whether you’re a new visitor wanting to learn about the brand or the admin man
 
 ### For Admin / Brand Owner:  
 - Simple admin login to manage content securely  
-- Ability to add, update, and delete categories and subcategories  
-- Manage shipping rates and customer inquiries from backend APIs  
-- Authentication secured by backend checks (no plain password exposure)  
+- Manage shipping rates, subscriber and customer inquiries from backend APIs  
+- Simple session-based authentication with backend-only credential checks and no plain-text password exposure.  
 
 ---
 
@@ -34,24 +33,65 @@ Whether you’re a new visitor wanting to learn about the brand or the admin man
 
 - **Frontend:** React, React Router, JSX, CSS Flexbox/Grid, Vite (build tool)  
 - **Backend:** Java Spring Boot, Spring MVC, Spring Data JPA, Hibernate ORM  
-- **Database:** H2 (in-memory for dev) or any SQL database of choice  
+- **Database:** MySQL database  
 - **API:** RESTful endpoints to handle CRUD operations and authentication  
 - **Deployment:** TBD
 
 ---
 
-## Installation & Setup
+## Dev & Deployment Tools:
+- Git + GitHub
+- IntelliJ IDEA for backend dev using Maven build
+- Postman
+- MySQL Database
+- VS Code for frontend dev
 
-### Prerequisites  
-- Node.js (v16 or above) for frontend  
-- Java JDK 21 for backend  
-- Maven(for backend build)  
-- MYSQL Database setup for persistent storage 
+---
 
-### Running Frontend  
+## 🚀 Installation Instructions
+
+### Steps to run the app on both frontend & backend
+
 ```bash
-# Clone repo and navigate to frontend folder
+
+Step 1: clone the repo
+git clone https://github.com/sugpon/yuvathees-wardrobe
+cd yuvathees-wardrobe
+
+Step 2: Setup the Backend(Usng IntelliJ)
+
+Create an .env file or configure your environment variables with:
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_db_password
+
+Start the Spring Boot app(Build& Compile)
+Backend API: http://localhost:8080
+
+Step 3: Setup the Frontend( Using VS code editor)
+
 cd frontend
 npm install
-npm run dev   # starts development server
+npm run dev
+
+Start React App
+development server http://localhost:5173 
+
+```
+
+## 🎨 Wireframes
+[View Polished Wireframes](https://drive.google.com/file/d/1hkAnssnbezOOb7-ESHMl2VGqOhJO6YSr/view?usp=drive_link)
+
+---
+
+## 🗃️ ER Diagram
+[View ER Diagram](https://drive.google.com/file/d/18YmfK1Z_Zaj-119tYM4G3sP38NC0ObUK/view?usp=drive_link)
+
+---
+
+## 🧩 Unsolved Problems / Future Features
+
+- User authentication and role-based access using Spring Security
+- Eloborate UI for Services with Categories and sub Categories
+- Unit tests (JUnit for backend, Jest for frontend)
+- Deployment using AWS
 
