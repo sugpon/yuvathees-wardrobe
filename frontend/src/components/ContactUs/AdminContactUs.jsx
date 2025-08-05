@@ -18,7 +18,7 @@ export default function AdminContactUs() {
   }, []);
 
   const handleDelete = (id) => {
-    if (!window.confirm("Are you sure you want to delete this subscriber?")) return;
+    if (!window.confirm("Are you sure you want to delete this Inquiry?")) return;
 
     fetch(`http://localhost:8080/contactinquiry/${id}`, {
       method: "DELETE",
@@ -34,7 +34,7 @@ export default function AdminContactUs() {
 
   return (
     <div>
-      <h2>Contact Inquiries</h2>
+      <h2>Contact Inquiries (Admin Only)</h2>
       <table border="1" cellPadding="8" style={{ borderCollapse: 'collapse', width: '100%' }}>
         <thead>
           <tr>

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import "../Home/Home.css";
-import "../../index.css";
-import Button from "../Button/Button.jsx";
+import { useState, useEffect } from "react"; // Importing React hooks
+import "../Home/Home.css"; // Importing CSS for styling
+import "../../index.css"; // Importing global styles
+import Button from "../Button/Button.jsx"; // Importing Resuable Button component for form submission
 
 const images = [
   "/images/Animation1.jpg",
@@ -35,20 +35,23 @@ const images = [
 ];
 
 export default function Home(props) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [adminUsername, setAdminUsername] = useState("");
-  const [adminPassword, setAdminPassword] = useState("");
-  const [loginMessage, setLoginMessage] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0); // State to track the current image index in the slideshow
+  const [adminUsername, setAdminUsername] = useState(""); // State to hold admin username
+  const [adminPassword, setAdminPassword] = useState(""); // State to hold admin password
+  const [loginMessage, setLoginMessage] = useState(""); // State to hold login message
 
+  // Effect to change the image every 2 seconds
+  // This creates a slideshow effect for the catalogue images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000);
+    }, 2000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
 
+  // Function to handle admin login
   const handleAdminLogin = async (e) => {
     e.preventDefault();
     setLoginMessage("");
@@ -74,7 +77,6 @@ export default function Home(props) {
         setAdminUsername(""); // Clear username after login
         setAdminPassword(""); // Clear password after login
         setLoginMessage("Login successful! You can now access admin features.");
-        // TODO: Handle post-login UI updates or redirects
       } else {
         setLoginMessage("Login failed. Please check credentials.");
       }
