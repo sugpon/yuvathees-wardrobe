@@ -1,6 +1,6 @@
 package com.yuvatheeswardrobe.backend.controller;
 
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession; // Importing HttpSession for session management
 import org.springframework.http.HttpStatus; // Importing HttpStatus for HTTP status codes
 import org.springframework.http.ResponseEntity; // Importing ResponseEntity for HTTP responses
 
