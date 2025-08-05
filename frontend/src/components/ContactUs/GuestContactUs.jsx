@@ -5,20 +5,22 @@ import Button from "../Button/Button.jsx";
 export default function ContactUs() {
   const [message, setMessage] = useState(""); // State to hold the message input
   const [submitted, setSubmitted] = useState(false); // State to track if the form has been submitted
-  const maxChars = 200;
+  const maxChars = 200; // Maximum characters allowed in the message
 
   // Handle textarea input change
+  // This function will update the message state and ensure it does not exceed maxChars
   const handleMessageChange = (e) => { 
     if (e.target.value.length <= maxChars) {
       setMessage(e.target.value);
     }
   };
 
-   // Minimal onSubmit with fetch POST integration
+   // Handle form submission
+  // This function will send the contact inquiry to the backend
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Gather form data from inputs and message state
+    // formData is a JSON Object to hold form input typed by user and sent to backend 
     const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -27,22 +29,23 @@ export default function ContactUs() {
     };
 
     try {
+      // Send POST request to backend to save contact inquiry
       const response = await fetch("http://localhost:8080/contactinquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      });
+      }); // Await the fetch call and store the response in a variable stringifying the formData object
 
       if (!response.ok) {
         console.error("Failed to send contact inquiry");
-        return;
+        return; //Error handling if response is not ok
       }
 
-      setSubmitted(true);
-      setMessage("");
-      e.target.reset();
+      setSubmitted(true); // Set submitted state to true to show thank you message 
+      setMessage(""); // Reset message state after submission
+      e.target.reset(); // Reset form inputs
     } catch (error) {
-      console.error("Error sending contact inquiry:", error);
+      console.error("Error sending contact inquiry:", error); //Error handling using try-catch 
     }
   };
 

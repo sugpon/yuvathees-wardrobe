@@ -3,7 +3,8 @@ import GuestContactUs from './GuestContactUs';
 import AdminContactList from './AdminContactUs';
 
 function ContactUs(props) {
-  return (
+  return ( 
+    // Render based on isLoggedIn prop from App.jsx parent component
     <div>
       {props.isLoggedIn ? <AdminContactList /> : <GuestContactUs />}
     </div>

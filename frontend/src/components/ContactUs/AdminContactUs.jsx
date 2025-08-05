@@ -3,24 +3,25 @@ import "../ContactUs/ContactUs.css";
 import Button from "../Button/Button.jsx"; 
 
 export default function AdminContactUs() {
-  const [inquiries, setInquiries] = useState([]); // State to hold contact inquiries
+  const [inquiries, setInquiries] = useState([]); // State to hold contact inquiries 
 
   // Fetch inquiries on component mount
   useEffect(() => {
     fetch('http://localhost:8080/contactinquiry', { 
-      credentials: 'include' // include cookies/session if used
+      credentials: 'include' // means including cookies/session if needed
     })
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch inquiries');
-        return res.json();
+        return res.json(); // Parse response as JSON
       })
       .then(data => setInquiries(data))
       .catch(error => console.error('Error loading inquiries:', error));
   }, []);
 
+  // Handle delete inquiry
+  // This function will delete the contact inquiry by ID
   const handleDelete = (id) => {
-    if (!window.confirm("Are you sure you want to delete this Inquiry?")) return; // Simple confirmation
-    // Delete inquiry by ID
+    if (!window.confirm("Are you sure you want to delete this Inquiry?")) return; // Window popup for confirmation
     fetch(`http://localhost:8080/contactinquiry/${id}`, {
       method: "DELETE",
       credentials: "include"
@@ -30,7 +31,7 @@ export default function AdminContactUs() {
         // Remove deleted Inquiry from state to update UI
         setInquiries(prev => prev.filter(inq => inq.id !== id));
       })
-      .catch(error => console.error(error));
+      .catch(error => console.error(error)); // Error handling
   };
 
   return (
