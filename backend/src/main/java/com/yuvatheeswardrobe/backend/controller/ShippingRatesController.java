@@ -80,19 +80,4 @@ public class ShippingRatesController extends AdminAccessController {
             return ResponseEntity.notFound().build();
         }
     }
-
-//    // POST /calculate - open for all, no auth needed
-//    @PostMapping("/calculate")
-//    public ResponseEntity<Double> calculateShippingCost(
-//        @RequestParam String country,
-//        @RequestParam double weight,
-//        @RequestParam(required = false, defaultValue = "false") boolean hasJewelry
-//    ) {
-//    try {
-//        double totalCost = shippingCalculator.calculateShipping(country, weight, hasJewelry);
-//        return ResponseEntity.ok(totalCost);
-//    } catch (IllegalArgumentException e) {
-//        return ResponseEntity.badRequest().build();
-//    }
-//    }
 }
