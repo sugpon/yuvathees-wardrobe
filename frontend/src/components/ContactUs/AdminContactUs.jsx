@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import "../ContactUs/ContactUs.css";
-import Button from "../Button/Button.jsx";
+import React, { useEffect, useState } from 'react'; 
+import "../ContactUs/ContactUs.css"; 
+import Button from "../Button/Button.jsx"; 
 
 export default function AdminContactUs() {
-  const [inquiries, setInquiries] = useState([]);
+  const [inquiries, setInquiries] = useState([]); // State to hold contact inquiries
 
+  // Fetch inquiries on component mount
   useEffect(() => {
-    fetch('http://localhost:8080/contactinquiry', {
+    fetch('http://localhost:8080/contactinquiry', { 
       credentials: 'include' // include cookies/session if used
     })
       .then(res => {
@@ -18,8 +19,8 @@ export default function AdminContactUs() {
   }, []);
 
   const handleDelete = (id) => {
-    if (!window.confirm("Are you sure you want to delete this Inquiry?")) return;
-
+    if (!window.confirm("Are you sure you want to delete this Inquiry?")) return; // Simple confirmation
+    // Delete inquiry by ID
     fetch(`http://localhost:8080/contactinquiry/${id}`, {
       method: "DELETE",
       credentials: "include"
