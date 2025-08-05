@@ -2,10 +2,10 @@ import React from 'react';
 import GuestSubscriber from './GuestSubscriber';
 import AdminSubscriber from './AdminSubscriber';
 
-function Subscriber({ isLoggedIn }) {
+function Subscriber(props) {
   return (
     <div>
-      {isLoggedIn ? <AdminSubscriber /> : <GuestSubscriber />}
+      {props.isLoggedIn ? <AdminSubscriber /> : <GuestSubscriber />}
     </div>
   );
 }

@@ -47,7 +47,7 @@ const AdminShipping = () => {
       .catch((err) => setError(err.message));
   };
 
-  // Start editing
+  // Handle edit
   const startEdit = (rate) => {
     setEditId(rate.id);
     setEditData({
@@ -58,13 +58,13 @@ const AdminShipping = () => {
     setFormError("");
   };
 
-  // Cancel editing
+  // Handle cancel edit
   const cancelEdit = () => {
     setEditId(null);
     setFormError("");
   };
 
-  // Save edited data
+  // Handle Save edited data 
   const saveEdit = () => {
     // Basic validation
     if (!editData.country.trim()) {
