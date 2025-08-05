@@ -1,5 +1,5 @@
 import './Header.css';
-import { Link } from 'react-router-dom'; // Importing Link from react-router-dom for navigation
+import { Link } from 'react-router-dom'; // Importing Link from react-router-dom for navigation inside the navigation bar
 
 function Header() {
   return (

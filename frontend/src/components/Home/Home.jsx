@@ -1,38 +1,11 @@
 import { useState, useEffect } from "react"; // Importing React hooks
-import "../Home/Home.css"; // Importing CSS for styling
-import "../../index.css"; // Importing global styles
+import "../Home/Home.css"; 
+import "../../index.css"; 
 import Button from "../Button/Button.jsx"; // Importing Resuable Button component for form submission
 
-const images = [
-  "/images/Animation1.jpg",
-  "/images/Animation2.jpg",
-  "/images/Animation3.jpg",
-  "/images/Animation4.jpg",
-  "/images/Animation5.jpg",
-  "/images/Animation6.jpg",
-  "/images/Animation7.jpg",
-  "/images/Animation8.jpg",
-  "/images/Animation9.jpg",
-  "/images/Animation10.jpg",
-  "/images/Animation11.jpg",
-  "/images/Animation12.jpg",
-  "/images/Animation13.jpg",
-  "/images/Animation14.jpg",
-  "/images/Animation15.jpg",
-  "/images/Animation16.jpg",
-  "/images/Animation17.jpg",
-  "/images/Animation18.jpg",
-  "/images/Animation19.jpg",
-  "/images/Animation20.jpg",
-  "/images/Animation21.jpg",
-  "/images/Animation22.jpg",
-  "/images/Animation23.jpg",
-  "/images/Animation24.jpg",
-  "/images/Animation25.jpg",
-  "/images/Animation26.jpg",
-  "/images/Animation27.jpg",
-  "/images/Animation28.jpg",
-];
+
+const images = Array.from({ length: 28 }, (_, i) => `/images/Animation${i + 1}.jpg`); // Dynamically generating image paths for the slideshow from images folder in public directory
+
 
 export default function Home(props) {
   const [currentIndex, setCurrentIndex] = useState(0); // State to track the current image index in the slideshow
@@ -47,7 +20,7 @@ export default function Home(props) {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 2000); // Change image every 3 seconds
+    }, 2500); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -70,19 +43,19 @@ export default function Home(props) {
           username: adminUsername, 
           password: adminPassword 
         }),
-      });
+      }); // Sending a POST request to the server for admin login
 
       if (response.ok) {
         props.setIsLoggedIn(true);
         setAdminUsername(""); // Clear username after login
         setAdminPassword(""); // Clear password after login
-        setLoginMessage("Login successful! You can now access admin features.");
+        setLoginMessage("Login successful! You can now access admin features."); // Success message after successful login
       } else {
-        setLoginMessage("Login failed. Please check credentials.");
+        setLoginMessage("Login failed. Please check credentials."); // Error handling for incorrect credentials
       }
     } catch (error) {
       setLoginMessage("Error connecting to server. Try again later.");
-      console.error("Admin login error:", error);
+      console.error("Admin login error:", error); //Error handling for server connection issues
     }
   };
 
