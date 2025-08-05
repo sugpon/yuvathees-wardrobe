@@ -33,19 +33,6 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Invalid credentials/ Please Use Guest Mode!"));
     }
 
-//    // Logoff endpoint
-//    @PostMapping("/logoff")
-//    public ResponseEntity<?> logoff() {
-//        isLoggedIn = false;
-//        return ResponseEntity.ok(Map.of("message", "Logged off successfully"));
-//    }
-//
-//    // Status check endpoint (optional)
-//    @GetMapping("/status")
-//    public ResponseEntity<?> status() {
-//        return ResponseEntity.ok(Map.of("isLoggedIn", isLoggedIn));
-//    }
-//
     // Static method to expose login status for other controllers to check
     public static boolean isAdminLoggedIn() {
         return isLoggedIn;
