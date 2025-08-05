@@ -4,16 +4,16 @@ import ShippingCalculator from "./ShippingCalculator";
 import "./Shipping.css";
 
 const GuestShipping = () => {
-  const [shippingRates, setShippingRates] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [shippingRates, setShippingRates] = useState([]); // State to hold shipping rates fetched from backend
+  const [loading, setLoading] = useState(true); // State to track loading status
+  const [error, setError] = useState(null); // State to track errors from backend
 
-  // Calculator states 
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [weight, setWeight] = useState("");
-  const [isJewelry, setIsJewelry] = useState(false);
-  const [message, setMessage] = useState("");
-  const [validationError, setValidationError] = useState("");
+  // Shipping Calculator states 
+  const [selectedCountry, setSelectedCountry] = useState(""); // State to hold the selected country for shipping
+  const [weight, setWeight] = useState(""); // State to hold the weight input for shipping calculation
+  const [isJewelry, setIsJewelry] = useState(false); // State to track if jewelry is included in the shipping
+  const [message, setMessage] = useState(""); // State to hold the message for shipping calculation results
+  const [validationError, setValidationError] = useState(""); // State to hold validation errors for the shipping calculator
 
   useEffect(() => {
     fetch("http://localhost:8080/shipping/rates")
@@ -32,7 +32,7 @@ const GuestShipping = () => {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, []); // Fetch shipping rates from backend on component mount
 
   // Handlers (these are passed down *as is* to ShippingCalculator)
   const handleCountrySelect = (e) => {
@@ -43,18 +43,21 @@ const GuestShipping = () => {
     setIsJewelry(false);
   };
 
+  // Handlers for weight input and jewelry checkbox
   const handleWeightCalculator = (e) => {
     setWeight(e.target.value);
     setMessage("");
     setValidationError("");
   };
 
+  // Handlers for jewelry checkbox
   const isJewelryIncluded = (e) => {
     setIsJewelry(e.target.checked);
     setMessage("");
     setValidationError("");
   };
 
+  // Function to calculate shipping cost based on selected country, weight, and jewelry inclusion
   const calculateShipping = () => {
     setMessage("");
     setValidationError("");
@@ -64,18 +67,18 @@ const GuestShipping = () => {
       return;
     }
 
-    const weightNum = parseFloat(weight);
+    const weightNum = parseFloat(weight); // Convert weight input to a number
 
     if (selectedCountry !== "India" && (isNaN(weightNum) || weightNum <= 0)) {
       setValidationError("Please enter a valid weight in kilograms.");
-      return;
+      return; // Validate weight input
     }
 
     if (weightNum > 10) {
       setMessage(
         "Orders over 10 kgs require custom quotes — please contact us directly."
-      );
-      return;
+      ); // Custom message for orders over 10 kgs
+      return; 
     }
 
     const rate = shippingRates.find(
@@ -87,18 +90,18 @@ const GuestShipping = () => {
       return;
     }
 
-    const roundedWeight = Math.ceil(weightNum);
-    let totalCost = roundedWeight * rate.costPerKg;
+    const roundedWeight = Math.ceil(weightNum); // Round up weight to the nearest kg as per standard carrier policies
+    let totalCost = roundedWeight * rate.costPerKg; // Calculate total cost based on weight and cost per kg
 
     if (isJewelry) {
-      totalCost += rate.jewelrySurcharge || 0;
+      totalCost += rate.jewelrySurcharge || 0; // Add jewelry surcharge if applicable
     }
 
     setMessage(
       `Estimated shipping cost: ₹${totalCost} for ${roundedWeight} kg${
         isJewelry ? ` (including ₹${rate.jewelrySurcharge} surcharge for jewelry)` : ""
       }.`
-    );
+    ); // Set message with calculated shipping cost
   };
 
   return (

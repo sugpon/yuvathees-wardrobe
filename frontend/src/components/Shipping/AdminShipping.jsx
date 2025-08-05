@@ -3,20 +3,18 @@ import "./Shipping.css";
 import Button from "../Button/Button.jsx";
 
 const AdminShipping = () => {
-  const [shippingRates, setShippingRates] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // States for adding/editing
-  const [isAdding, setIsAdding] = useState(false);
-  const [newCountry, setNewCountry] = useState({ country: "", costPerKg: "", jewelrySurcharge: "" });
-  const [editId, setEditId] = useState(null);
-  const [editData, setEditData] = useState({ country: "", costPerKg: "", jewelrySurcharge: "" });
-  const [formError, setFormError] = useState("");
+  const [shippingRates, setShippingRates] = useState([]); // State to hold existing shipping rates
+  const [loading, setLoading] = useState(true); // State to track loading status from backend
+  const [error, setError] = useState(null); // State to track errors 
+  const [isAdding, setIsAdding] = useState(false); // State to track if adding a new country shipping data
+  const [newCountry, setNewCountry] = useState({ country: "", costPerKg: "", jewelrySurcharge: "" }); // State for adding new country shipping data
+  const [editId, setEditId] = useState(null); // State to track which entry is being edited in the table
+  const [editData, setEditData] = useState({ country: "", costPerKg: "", jewelrySurcharge: "" }); // State for editing existing country shipping data
+  const [formError, setFormError] = useState(""); // State for form validation errors
 
   // Fetch shipping rates from backend
   useEffect(() => {
-    fetchRates();
+    fetchRates(); //GET request to fetch shipping rates
   }, []);
 
   const fetchRates = () => {
@@ -36,7 +34,7 @@ const AdminShipping = () => {
       });
   };
 
-  // Handle delete
+  // Handle deleting a shipping rate from the backend
   const handleDelete = (id) => {
     if (!window.confirm("Are you sure you want to delete this entry?")) return;
     fetch(`http://localhost:8080/shipping/rates/${id}`, { method: "DELETE" })
@@ -47,7 +45,7 @@ const AdminShipping = () => {
       .catch((err) => setError(err.message));
   };
 
-  // Handle edit
+  // Handle editing an existing shipping rate
   const startEdit = (rate) => {
     setEditId(rate.id);
     setEditData({
@@ -58,15 +56,14 @@ const AdminShipping = () => {
     setFormError("");
   };
 
-  // Handle cancel edit
+  // Handle cancel editing an existing shipping rate
   const cancelEdit = () => {
     setEditId(null);
     setFormError("");
   };
 
-  // Handle Save edited data 
+  // Handle saving edited shipping rate in to the backend 
   const saveEdit = () => {
-    // Basic validation
     if (!editData.country.trim()) {
       setFormError("Country name is required");
       return;
@@ -80,6 +77,7 @@ const AdminShipping = () => {
       return;
     }
 
+    // PUT request to UPDATE the shipping rates in the backend
     fetch(`http://localhost:8080/shipping/rates/${editId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -103,9 +101,8 @@ const AdminShipping = () => {
     setNewCountry((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Add new country
+  // Handle new country addition in to the backend
   const addNewCountry = () => {
-    // Basic validation
     if (!newCountry.country.trim()) {
       setFormError("Country name is required");
       return;
@@ -119,6 +116,7 @@ const AdminShipping = () => {
       return;
     }
 
+    // POST request to add new country shipping rates
     fetch("http://localhost:8080/shipping/rates", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
