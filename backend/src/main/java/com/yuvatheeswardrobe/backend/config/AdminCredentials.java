@@ -1,7 +1,7 @@
 package com.yuvatheeswardrobe.backend.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties; // Importing ConfigurationProperties to bind properties from application.properties or application.yml
+import org.springframework.stereotype.Component; // Importing Component to register this class as a Spring bean
 
 @Component
 @ConfigurationProperties(prefix = "admin")

@@ -1,8 +1,6 @@
 package com.yuvatheeswardrobe.backend.controller;
-
 import com.yuvatheeswardrobe.backend.entity.ShippingRates;
 import com.yuvatheeswardrobe.backend.repository.ShippingRatesRepository;
-import com.yuvatheeswardrobe.backend.service.ShippingCalculator;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
