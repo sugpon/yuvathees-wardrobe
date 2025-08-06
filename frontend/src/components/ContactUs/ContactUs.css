@@ -2,7 +2,8 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the form horizontally */
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the form vertically */
 }
 
 .contactSection h2 {
