@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository; // Importing JpaRe
 
 public interface ContactInquiryRepository extends JpaRepository<ContactInquiry, Integer> { // Extending JpaRepository to provide CRUD operations for ContactInquiry entity
 
-    // Additional query methods can be defined here if needed
 }
