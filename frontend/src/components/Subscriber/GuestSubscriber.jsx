@@ -3,26 +3,26 @@ import '../Subscriber/Subscriber.css';
 import Button from '../Button/Button.jsx';
 
 function GuestSubscriber() {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState(''); // State to hold email input
+  const [submitted, setSubmitted] = useState(false); // State to track if form is submitted
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setEmail(event.target.value); // Update email state on input change
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission behavior
 
-    if (!email) return;
+    if (!email) return; // If email is empty, do nothing
 
-    const subscriberData = { email: email.trim() };
+    const subscriberData = { email: email.trim() }; // Prepare subscriber data
 
     try {
       const response = await fetch('http://localhost:8080/subscriber', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscriberData),
-      });
+      }); // Send POST request to server with subscriber data
 
       if (!response.ok) {
         console.error('Failed to subscribe');
@@ -35,7 +35,7 @@ function GuestSubscriber() {
     } catch (error) {
       console.error('Error subscribing:', error);
     }
-  };
+  }; // Function to handle form submission and send data to server
 
   return (
     <div className="subscriberSection">
@@ -61,7 +61,7 @@ function GuestSubscriber() {
         />
         <Button label="Subscribe" type="submit" />
         {submitted && (
-          <p className="thankYouMessage">Thank you for subscribing!</p>
+          <p className="thankYouMessage">Thank you for subscribing! We will keep you excited! :)</p>
         )}
       </form>
     </div>

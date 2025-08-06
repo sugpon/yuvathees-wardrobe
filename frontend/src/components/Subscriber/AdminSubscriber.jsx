@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../Subscriber/Subscriber.css"; // Assume you will style similarly to ContactUs
+import "../Subscriber/Subscriber.css";
 import Button from "../Button/Button.jsx";
 
 function AdminSubscriber() {
-  const [subscribers, setSubscribers] = useState([]);
+  const [subscribers, setSubscribers] = useState([]); // State to hold subscribers list
 
   useEffect(() => {
     fetch("http://localhost:8080/subscriber", {
@@ -15,10 +15,10 @@ function AdminSubscriber() {
       })
       .then((data) => setSubscribers(data))
       .catch((error) => console.error("Error fetching subscribers:", error));
-  }, []);
+  }, []); // Fetch subscribers from server on component mount
 
    const handleDelete = (id) => {
-    if (!window.confirm("Are you sure you want to delete this subscriber?")) return;
+    if (!window.confirm("Are you sure you want to delete this subscriber?")) return; //Window confirmation before deletion
 
     fetch(`http://localhost:8080/subscriber/${id}`, {
       method: "DELETE",
@@ -30,7 +30,7 @@ function AdminSubscriber() {
         setSubscribers(prev => prev.filter(sub => sub.id !== id));
       })
       .catch(error => console.error(error));
-  };
+  }; // Function to handle subscriber deletion
 
 
   return (
