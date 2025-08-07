@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties; // I
 import org.springframework.stereotype.Component; // Importing Component to register this class as a Spring bean
 
 @Component
-@ConfigurationProperties(prefix = "admin")
+@ConfigurationProperties(prefix = "admin") // Specifying the prefix for properties in application.properties starting with "admin" to bind to this class
 public class AdminCredentials {
 
     private String username;
