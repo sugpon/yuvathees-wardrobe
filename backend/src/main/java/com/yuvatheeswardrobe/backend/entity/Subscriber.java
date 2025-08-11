@@ -14,7 +14,7 @@ public class Subscriber {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @CreationTimestamp
+    @CreationTimestamp // Automatically sets the timestamp when the entity is created
     @Column(name = "subscribed_at", updatable = false)
     private LocalDateTime subscribedAt;
 

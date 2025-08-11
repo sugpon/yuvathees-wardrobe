@@ -45,8 +45,8 @@ export default function Home(props) {
         }),
       }); // Sending a POST request to the server for admin login
 
-      if (response.ok) {
-        props.setIsLoggedIn(true);
+      if (response.ok) { // response.ok is a shorthand for checking if the response status is in the range 200-299
+        props.setIsLoggedIn(true); // Update the login status in the parent component
         setAdminUsername(""); // Clear username after login
         setAdminPassword(""); // Clear password after login
         setLoginMessage("Login successful! You can now access admin features."); // Success message after successful login

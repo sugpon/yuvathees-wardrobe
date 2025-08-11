@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component; // Importing Component to regis
 
 @Component
 @ConfigurationProperties(prefix = "admin") // Specifying the prefix for properties in application.properties starting with "admin" to bind to this class
-public class AdminCredentials {
-
+public class AdminCredentials { // abstract base class(ABC) for admin credentials
     private String username;
     private String password;
 
